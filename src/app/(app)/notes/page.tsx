@@ -1,5 +1,8 @@
-export default function() {
-    return(
-        <div>Notes</div>
-    )
+export default function Notes() {
+  return (
+    <div>
+      
+      <div>Notes</div>
+    </div>
+  );
 }

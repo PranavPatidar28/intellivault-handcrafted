@@ -8,8 +8,14 @@ export const auth = betterAuth({
     provider: "postgresql",
   }),
   plugins: [nextCookies()],
+  session: {
+    cookieCache: {
+      enabled: false,
+      maxAge: 10 * 60, // 10 minutes
+    },
+  },
   emailAndPassword: {
-    enabled: false,
+    enabled: true,
   },
   baseURL: process.env.BETTER_AUTH_URL,
   socialProviders: {
