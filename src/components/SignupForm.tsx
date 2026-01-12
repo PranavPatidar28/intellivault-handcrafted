@@ -73,12 +73,12 @@ function PasswordStrengthIndicator({ password }: { password: string }) {
           <div
             key={level}
             className={`h-1 flex-1 rounded-full transition-colors ${strength >= level
-                ? strength <= 2
-                  ? "bg-destructive"
-                  : strength === 3
-                    ? "bg-yellow-500"
-                    : "bg-green-500"
-                : "bg-muted"
+              ? strength <= 2
+                ? "bg-destructive"
+                : strength === 3
+                  ? "bg-yellow-500"
+                  : "bg-green-500"
+              : "bg-muted"
               }`}
           />
         ))}

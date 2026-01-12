@@ -1,7 +1,8 @@
 "use client"
 import { Calendar, FolderOpen, Home, Inbox, Notebook, Search, SearchIcon, Settings, Tag } from "lucide-react";
-import Image from "next/image";
-import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from "./ui/sidebar";
+import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from "./ui/sidebar";
+import { NavUser } from "./NavUser";
+import { User } from "better-auth";
 
 // Menu items.
 const items = [
@@ -37,12 +38,12 @@ const items = [
   },
 ]
 
-export function AppSidebar() {
+export function AppSidebar({ user }: { user: User }) {
   const { open } = useSidebar()
 
   return (
     <Sidebar collapsible="icon">
-      <SidebarHeader className="border-b border-sidebar-border p-2 flex items-start">
+      <SidebarHeader className="h-12 border-b border-sidebar-border p-2 flex items-start">
         <div className="flex h-8 items-center gap-2">
           {/* Logo (Just for the sake of it - zero efforts done) */}
           <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-linear-to-br from-accent-foreground/60 to-accent/80 shadow-md group-data-[collapsible=icon]:group-data-[state=collapsed]:mx-auto">
@@ -75,6 +76,13 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+      <SidebarFooter>
+        <NavUser user={{
+          name: user.name ?? "User",
+          email: user.email,
+          image: user.image,
+        }} />
+      </SidebarFooter>
     </Sidebar>
   )
 }
